@@ -1,0 +1,69 @@
+<html>
+<head>
+  <style>
+  body {
+    background-image: url( "background.jpg");
+  }
+  table#t1 {
+    width: 100%;
+    background-color: #d3baff;
+  }
+      
+
+  </style>
+</head>
+<body>
+
+
+
+Add homework assignment
+
+<form action='/newPost' method="POST">
+
+  <input type="text" name="hwAssignment" value=""/>
+  <input type="text" name="dueDate" value=""/>
+  <input type="submit" name="submit"/>
+
+
+</form>
+
+
+<!--
+<form action='/removePost' method="POST">
+
+  <input type="text" name="hwAssRemove" value=""/>
+  <input type="text" name="dueDateRemove" value=""/>
+  <input type="submit" name="submit"/>
+
+
+</form>
+-->
+
+ <table id="t1">
+    <% for(var i = 0; i<homework.length;i++) { %>
+      <tr class="tableElement">
+        <th >
+        <form style="display:inline-block" action='/removePost' method="POST">
+            <button type="submit" class="removeButton" name= <%= homework[i]._id %> >
+              X
+            </button>
+          </form>
+         <form style="display:inline-block" action='/edit' method="POST">
+            <button type="submit" class="removeButton" name= <%= homework[i]._id %> >
+              edit
+            </button>
+          </form>
+
+        </th>
+        <th > <%= "Assignment: " + homework[i].hwAssignment %> </th>
+        <th > <%= "Date: " + homework[i].dueDate %> </th>
+
+      </tr>
+    <% } %>
+  </table>
+
+
+
+
+</body>
+</html>
